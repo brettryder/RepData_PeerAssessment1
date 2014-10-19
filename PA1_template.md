@@ -6,7 +6,7 @@
 ```r
 data<-read.csv(file="activity.csv")
 data$date<-as.Date(data$date,format="%d/%m/%Y")
-steps_day<-aggregate(data$steps~data$date,data=data,mean,na.action=na.omit)
+steps_day<-aggregate(data$steps~data$date,data=data,sum,na.action=na.omit)
 ```
 
 ## Histogram of the number of steps taken each day:
@@ -25,7 +25,7 @@ mean(steps_day[,2],na.rm=TRUE)
 ```
 
 ```
-## [1] 37.38
+## [1] 10766
 ```
 ## The median number of steps taken per day is:
 
@@ -34,7 +34,7 @@ median(steps_day[,2],na.rm=TRUE)
 ```
 
 ```
-## [1] 37.38
+## [1] 10765
 ```
 
 ##Time series plot of the 5-minute interval and the average number of steps taken, averaged across all days:
@@ -79,7 +79,7 @@ data_new[missing,1] <- new_vals[missing]
 ##Plotting histogram
 
 ```r
-steps_day_new<-aggregate(data_new$steps~data_new$date,data=data,mean)
+steps_day_new<-aggregate(data_new$steps~data_new$date,data=data,sum)
 hist(steps_day_new[,2],xlab="steps taken each day (filled)",main="Histogram of Number of Steps")
 ```
 
@@ -92,7 +92,7 @@ mean(steps_day_new[,2])
 ```
 
 ```
-## [1] 37.38
+## [1] 10766
 ```
 
 ##The median number of steps taken per day is:
@@ -102,7 +102,7 @@ median(steps_day_new[,2])
 ```
 
 ```
-## [1] 37.38
+## [1] 10766
 ```
 
 ## Are there differences in activity patterns between weekdays and weekends?

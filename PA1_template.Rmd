@@ -10,7 +10,7 @@ output:
 ```{r}
 data<-read.csv(file="activity.csv")
 data$date<-as.Date(data$date,format="%d/%m/%Y")
-steps_day<-aggregate(data$steps~data$date,data=data,mean,na.action=na.omit)
+steps_day<-aggregate(data$steps~data$date,data=data,sum,na.action=na.omit)
 ```
 
 ## Histogram of the number of steps taken each day:
@@ -56,7 +56,7 @@ data_new[missing,1] <- new_vals[missing]
 
 ##Plotting histogram
 ```{r}
-steps_day_new<-aggregate(data_new$steps~data_new$date,data=data,mean)
+steps_day_new<-aggregate(data_new$steps~data_new$date,data=data,sum)
 hist(steps_day_new[,2],xlab="steps taken each day (filled)",main="Histogram of Number of Steps")
 ```
 
